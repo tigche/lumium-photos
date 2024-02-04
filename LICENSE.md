@@ -1,7 +1,7 @@
 # Lumium Proprietary License
 &copy; 2024 Evan Tigchelaar
 
-This license (the "License") cover the use of software (the "Software" or "Lumium software") authored by the author(s) listed above (the "Author").
+This license (the "License") covers the use of software (the "Software" or "Lumium software") authored by the author(s) listed above (the "Author").
 
 Unless accompanied by a separate software license agreement, any Lumium software provided to you is subject to these Terms. The Software is licensed, not sold, and the Author reserves all rights not explicitly granted by this License, whether by implication, estoppel, or otherwise.
 
