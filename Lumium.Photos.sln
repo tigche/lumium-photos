@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumium.Photos.WebApp", "WebApp\Lumium.Photos.WebApp.csproj", "{F1A57A5B-55A7-441A-80FE-96B045C3DE55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumium.Photos.WebApp", "WebApp\Lumium.Photos.WebApp.csproj", "{F1A57A5B-55A7-441A-80FE-96B045C3DE55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumium.Photos.WebUI", "WebUI\Lumium.Photos.WebUI.csproj", "{2FE3952D-92BD-4829-9E6E-4289C23D75CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumium.Photos.WebUI", "WebUI\Lumium.Photos.WebUI.csproj", "{2FE3952D-92BD-4829-9E6E-4289C23D75CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumium.Photos.Models", "Models\Lumium.Photos.Models.csproj", "{C138101E-7BC6-4ACD-BFB7-65E88284655B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2FE3952D-92BD-4829-9E6E-4289C23D75CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FE3952D-92BD-4829-9E6E-4289C23D75CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE3952D-92BD-4829-9E6E-4289C23D75CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C138101E-7BC6-4ACD-BFB7-65E88284655B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C138101E-7BC6-4ACD-BFB7-65E88284655B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C138101E-7BC6-4ACD-BFB7-65E88284655B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C138101E-7BC6-4ACD-BFB7-65E88284655B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

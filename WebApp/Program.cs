@@ -3,19 +3,24 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Lumium.Photos.WebApp.Data;
 using Lumium.Photos.WebApp.Areas.Identity.Data;
+using Lumium.Photos.Models.Db.Context;
 
-var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationContextConnection' not found.");
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+string applicationConnectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationContextConnection' not found.");
+string dataConnectionString = builder.Configuration.GetConnectionString("DataContextConnection") ?? throw new InvalidOperationException("Connection string 'DataContextConnection' not found.");
 
-builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+// Data
+builder.Services
+    .AddDbContext<ApplicationContext>(options => options.UseSqlServer(applicationConnectionString))
+    .AddDbContext<DataContext>(options => options.UseSqlServer(dataConnectionString))
+    .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationContext>();
-
-// Add services to the container.
-builder.Services.AddRazorComponents()
+// Components
+builder.Services
+    .AddRazorComponents()
     .AddInteractiveServerComponents();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -25,14 +30,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app
+    .UseHttpsRedirection()
+    .UseAntiforgery();
 
-app.UseStaticFiles();
-app.UseAntiforgery();
 app.MapControllers();
 app.MapRazorPages();
 
-app.MapRazorComponents<App>()
+app
+    .MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();

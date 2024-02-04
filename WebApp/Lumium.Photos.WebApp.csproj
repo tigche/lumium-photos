@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Models\Lumium.Photos.Models.csproj" />
     <ProjectReference Include="..\WebUI\Lumium.Photos.WebUI.csproj" />
   </ItemGroup>
 
