@@ -1,0 +1,10 @@
+.wui-spacer {
+    margin: 0;
+    padding: 0;
+    &.vertical-True {
+        height: var(--size);
+    }
+    &.vertical-False {
+        width: var(--size);
+    }
+}

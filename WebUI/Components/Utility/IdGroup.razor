@@ -1,0 +1,21 @@
+@using Lumium.Photos.WebUI.Models
+
+@if (ChildContent is not null)
+{
+    @ChildContent(Id);
+}
+
+@code {
+    [Parameter]
+    public RenderFragment<CssId>? ChildContent { get; set; } = null;
+    [Parameter]
+    public CssId Id { get; set; } = new();
+    [Parameter]
+    public EventCallback<CssId> IdChanged { get; set; }
+
+    public async Task Refresh()
+    {
+        Id = new();
+        await IdChanged.InvokeAsync(Id);
+    }
+}

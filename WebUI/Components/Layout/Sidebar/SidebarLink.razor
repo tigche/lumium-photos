@@ -1,0 +1,14 @@
+@using Microsoft.AspNetCore.Components.Routing
+
+<li class="nav-item">
+    <NavLink class="nav-link" href="@To">
+        @ChildContent
+    </NavLink>
+</li>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; } = null;
+    [Parameter]
+    public string To { get; set; } = String.Empty;
+}
