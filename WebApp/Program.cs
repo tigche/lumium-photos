@@ -12,7 +12,13 @@ string dataConnectionString = builder.Configuration.GetConnectionString("DataCon
 // Data
 builder.Services
     .AddDbContext<ApplicationContext>(options => options.UseSqlServer(applicationConnectionString))
-    .AddDbContext<DataContext>(options => options.UseSqlServer(dataConnectionString))
+    .AddDbContext<DataContext>(options =>
+    {
+        options.UseSqlServer(dataConnectionString, builder =>
+        {
+            builder.MigrationsAssembly("Lumium.Photos.WebApp");
+        });
+    })
     .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationContext>();
 
 // Components
