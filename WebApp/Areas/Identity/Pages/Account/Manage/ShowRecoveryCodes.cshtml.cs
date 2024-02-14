@@ -2,7 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using Lumium.Photos.WebApp.Areas.Identity.Data;
+using Lumium.Photos.Models.Db.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

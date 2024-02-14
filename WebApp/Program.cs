@@ -1,25 +1,23 @@
 using Lumium.Photos.WebApp.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Lumium.Photos.WebApp.Data;
-using Lumium.Photos.WebApp.Areas.Identity.Data;
 using Lumium.Photos.Models.Db.Context;
+using Lumium.Photos.Models.Db.Models;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 string applicationConnectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationContextConnection' not found.");
-string dataConnectionString = builder.Configuration.GetConnectionString("DataContextConnection") ?? throw new InvalidOperationException("Connection string 'DataContextConnection' not found.");
 
 // Data
 builder.Services
-    .AddDbContext<ApplicationContext>(options => options.UseSqlServer(applicationConnectionString))
-    .AddDbContext<DataContext>(options =>
+    .AddDbContext<ApplicationContext>(options =>
     {
-        options.UseSqlServer(dataConnectionString, builder =>
+        options.UseSqlServer(applicationConnectionString, builder =>
         {
             builder.MigrationsAssembly("Lumium.Photos.WebApp");
         });
     })
-    .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationContext>();
+    .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationContext>();
 
 // Components
 builder.Services
