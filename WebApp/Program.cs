@@ -9,7 +9,7 @@ string applicationConnectionString = builder.Configuration.GetConnectionString("
 
 // Data
 builder.Services
-    .AddDbContext<ApplicationContext>(options =>
+    .AddDbContextFactory<ApplicationContext>(options =>
     {
         options.UseSqlServer(applicationConnectionString, builder =>
         {
@@ -18,6 +18,13 @@ builder.Services
     })
     .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationContext>();
+
+builder.Services.AddScoped<ApplicationContext>(implementationFactory =>
+{
+    return implementationFactory
+        .GetRequiredService<IDbContextFactory<ApplicationContext>>()
+        .CreateDbContext();
+});
 
 // Components
 builder.Services

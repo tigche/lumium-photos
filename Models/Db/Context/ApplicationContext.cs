@@ -13,6 +13,7 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<ApplicationSettings> ApplicationSettings { get; set; }
+    public DbSet<Photo> Photos { get; set; }
     public ApplicationSettings Settings
     {
         get
