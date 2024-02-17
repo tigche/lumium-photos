@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Lumium.Photos.Models.Db.Context;
 using Lumium.Photos.Models.Db.Models;
+using Lumium.Photos.Utility.Disk;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 string applicationConnectionString = builder.Configuration.GetConnectionString("ApplicationContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationContextConnection' not found.");
@@ -30,6 +31,10 @@ builder.Services.AddScoped<ApplicationContext>(implementationFactory =>
 builder.Services
     .AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Services
+builder.Services
+    .AddScoped<Storage>();
 
 WebApplication app = builder.Build();
 

@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Lumium.Photos.Models.csproj" />
+    <ProjectReference Include="..\Utility\Lumium.Photos.Utility.csproj" />
     <ProjectReference Include="..\WebUI\Lumium.Photos.WebUI.csproj" />
   </ItemGroup>
 

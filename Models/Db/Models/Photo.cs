@@ -15,5 +15,7 @@ namespace Lumium.Photos.Models.Db.Models
             FileName = $"{Guid.NewGuid()}-{name}";
             return FileName;
         }
+        public string GetFullPath(string repositoryLocation)
+            => Path.Combine(repositoryLocation, FileName);
     }
 }
